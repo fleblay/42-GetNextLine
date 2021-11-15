@@ -6,9 +6,11 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:01:59 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/11 12:23:47 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/15 11:34:05 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 unsigned int	ft_strlen(const char *s)
 {
@@ -53,16 +55,16 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strrawjoin(char const *s1, char const *s2, int s2size)
 {
 	char	*join;
 	int		i;
 
 	join = NULL;
 	i = 0;
-	if (! s1 || ! s2)
+	if (! s1 && ! s2)
 		return (NULL);
-	join = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	join = (char *)malloc((ft_strlen(s1) + s2size + 1) * sizeof(char));
 	if (! join)
 		return (NULL);
 	while (s1[i])
@@ -71,7 +73,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	i = 0;
-	while (s2[i])
+	while (i < s2size)
 	{
 		join[ft_strlen(s1) + i] = s2[i];
 		i++;
