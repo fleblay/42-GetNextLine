@@ -6,7 +6,7 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:01:05 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/17 15:13:34 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/17 16:26:11 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ static int	load_content(int fd, char **dest)
 char	*get_next_line(int fd)
 {
 	static char	*mainstr = NULL;
-	char		*tmp = NULL;
-	char		*togive = NULL;
+	char		*tmp;
+	char		*togive;
 
 	if (load_content(fd, &mainstr) <= 0 && ! mainstr)
 		return (NULL);
@@ -145,6 +145,8 @@ char	*get_next_line(int fd)
 			return (togive);
 		}
 	}
+	//fonction updatestr pour *togive && *mainstr
+	//free togive puis togive && tmp puis togive, tmp && main si alloc fail
 	togive = ft_substr(mainstr, 0, ft_strchr(mainstr, '\n') - mainstr + 1);
 	if (! togive)
 		return (NULL);
@@ -167,14 +169,17 @@ char	*get_next_line(int fd)
 #include <fcntl.h>
 #include <stdio.h>
 
-int main (void)
+int main (int ac, char *av[])
 {
 
 	char *test;
 	int	fd;
 
-	fd = open("./test2.txt", O_RDONLY);
 	test = NULL;
+	if (ac == 2)
+		fd = open(av[1], O_RDONLY);
+	else
+		fd = 0;
 
 	while ((test = get_next_line(fd)) != NULL)
 	{
