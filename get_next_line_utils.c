@@ -6,7 +6,7 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:01:59 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/17 10:44:46 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:13:55 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*ft_strrawjoin(char const *s1, char const *s2, int s2len)
 	join = (char *)malloc((s1len + s2len + 1) * sizeof(char));
 	if (! join)
 		return (NULL);
-	while (s1[++i])
+	while (++i < s1len)
 		join[i] = s1[i];
 	i = -1;
 	while (++i < s2len)
