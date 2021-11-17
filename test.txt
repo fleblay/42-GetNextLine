@@ -1,4 +1,4 @@
-Salut_les_gars_je_vais_bien_toto_Michel_est_jeune.
-Debut_de_la_2eme_ligne.
-La_troisieme_ligne.
-La_4eme_STOP.
+Salut_les_gars
+je_vais_bien
+toto
+Michel_est_jeune

@@ -6,7 +6,7 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:01:59 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/15 11:34:05 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/17 10:44:46 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,29 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
-char	*ft_strrawjoin(char const *s1, char const *s2, int s2size)
+char	*ft_strrawjoin(char const *s1, char const *s2, int s2len)
 {
 	char	*join;
 	int		i;
+	int		s1len;
 
 	join = NULL;
-	i = 0;
-	if (! s1 && ! s2)
+	i = -1;
+	if (! s1 && ! s2) // modif versus original
 		return (NULL);
-	join = (char *)malloc((ft_strlen(s1) + s2size + 1) * sizeof(char));
+	if (! s1)
+		s1len = 0;
+	else
+		s1len = ft_strlen(s1);
+	join = (char *)malloc((s1len + s2len + 1) * sizeof(char));
 	if (! join)
 		return (NULL);
-	while (s1[i])
-	{
+	while (s1[++i])
 		join[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (i < s2size)
-	{
-		join[ft_strlen(s1) + i] = s2[i];
-		i++;
-	}
-	join[ft_strlen(s1) + i] = '\0';
+	i = -1;
+	while (++i < s2len)
+		join[s1len + i] = s2[i];
+	join[s1len + i] = '\0';
 	return (join);
 }
 
