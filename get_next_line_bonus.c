@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 11:01:05 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/18 14:23:52 by fle-blay         ###   ########.fr       */
+/*   Created: 2021/11/18 13:53:50 by fle-blay          #+#    #+#             */
+/*   Updated: 2021/11/18 14:23:29 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -62,28 +62,28 @@ int	update_str(char **togive, char **mainstr)
 
 char	*get_next_line(int fd)
 {
-	static char	*mainstr = NULL;
+	static char	*mainstr[FD_MAX_NUMBER] = {NULL};
 	char		*togive;
 
 	togive = NULL;
-	if (load_content(fd, &mainstr) <= 0 && ! mainstr)
+	if (load_content(fd, &mainstr[fd]) <= 0 && ! mainstr[fd])
 		return (NULL);
-	while (! ft_strchr(mainstr, '\n'))
+	while (! ft_strchr(mainstr[fd], '\n'))
 	{
-		if (load_content(fd, &mainstr) <= 0)
+		if (load_content(fd, &mainstr[fd]) <= 0)
 		{
-			togive = ft_strdup(mainstr);
+			togive = ft_strdup(mainstr[fd]);
 			if (! togive)
 				return (NULL);
-			free(mainstr);
-			mainstr = NULL;
+			free(mainstr[fd]);
+			mainstr[fd] = NULL;
 			return (togive);
 		}
 	}
-	if (! update_str(&togive, &mainstr))
+	if (! update_str(&togive, &mainstr[fd]))
 	{
 		free(togive);
-		free(mainstr);
+		free(mainstr[fd]);
 	}
 	return (togive);
 }
