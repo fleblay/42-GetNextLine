@@ -6,7 +6,7 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:01:05 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/18 11:21:11 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/18 12:07:49 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static int	load_content(int fd, char **dest)
+int	load_content(int fd, char **dest)
 {
 	char	buf[BUFFER_SIZE];
 	char	*content;
@@ -87,7 +87,7 @@ char	*get_next_line(int fd)
 	return (togive);
 }
 
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h>
 
 int	main(int ac, char *av[])
@@ -107,4 +107,4 @@ int	main(int ac, char *av[])
 		test = NULL;
 	}
 	return (0);
-}
+}*/
