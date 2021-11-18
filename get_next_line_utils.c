@@ -6,7 +6,7 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:01:59 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/17 14:13:55 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/18 10:22:12 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ char	*ft_strdup(const char *s)
 	return (copy);
 }
 
+/*Version modifiee de strjoin pour prendre en compte une s2 qui ne se finit
+pas par un nulbyte. S1 peut egalement etre NULL (utile pour le passage de
+la mainstr qui vaut NULL lors du premier passage et ne pas avoir a l'init
+avec un nullbyte*/
+
 char	*ft_strrawjoin(char const *s1, char const *s2, int s2len)
 {
 	char	*join;
@@ -63,7 +68,7 @@ char	*ft_strrawjoin(char const *s1, char const *s2, int s2len)
 
 	join = NULL;
 	i = -1;
-	if (! s1 && ! s2) // modif versus original
+	if (! s1 && ! s2)
 		return (NULL);
 	if (! s1)
 		s1len = 0;
