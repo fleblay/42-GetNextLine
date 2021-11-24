@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:38:53 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/24 15:43:03 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/24 17:30:39 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,8 @@ char	*get_next_line(int fd)
 	return (togive);
 }
 
-/*#include <fcntl.h>
+/*
+#include <fcntl.h>
 #include <stdio.h>
 
 int	main(int ac, char *av[])
@@ -135,5 +136,7 @@ int	main(int ac, char *av[])
 		free (test);
 		test = NULL;
 	}
+	while (1);
 	return (0);
-}*/
+}
+*/
