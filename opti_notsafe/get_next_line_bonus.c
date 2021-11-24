@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_opti.c                               :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 11:01:05 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/24 11:40:02 by fle-blay         ###   ########.fr       */
+/*   Created: 2021/11/24 11:33:20 by fle-blay          #+#    #+#             */
+/*   Updated: 2021/11/24 11:37:41 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -48,56 +48,34 @@ int	update_str(char **togive, char **mainstr)
 	return (1);
 }
 
-char	*safe_exit(char *str1, char *str2, char *str3, char *str4)
-{
-	if (str1)
-	{
-		free(str1);
-	}
-	if (str2)
-	{
-		free(str2);
-	}
-	if (str3)
-	{
-		free(str3);
-	}
-	if (str4)
-	{
-		free(str4);
-	}
-	return (NULL);
-}
-
 char	*get_next_line(int fd)
 {
-	static char	*mainstr = NULL;
+	static char	*mainstr[FD_MAX_NUMBER] = {NULL};
 	char		*togive;
 	int			read;
 	int			cumulread;
 
 	read = 0;
 	cumulread = 0;
-	if (load_content(fd, &mainstr) <= 0 && ! mainstr)
+	if (load_content(fd, &mainstr[fd]) <= 0 && ! mainstr[fd])
 		return (NULL);
-	while (! ft_strchr(mainstr + cumulread, '\n'))
+	while (! ft_strchr(mainstr[fd] + cumulread, '\n'))
 	{
-		read = load_content(fd, &mainstr);
+		read = load_content(fd, &mainstr[fd]);
 		if (read <= 0)
 		{
-			togive = ft_strdup(mainstr);
-			free(mainstr);
-			mainstr = NULL;
+			togive = ft_strdup(mainstr[fd]);
+			free(mainstr[fd]);
+			mainstr[fd] = NULL;
 			return (togive);
 		}
 		cumulread += read;
 	}
-	update_str(&togive, &mainstr);
+	update_str(&togive, &mainstr[fd]);
 	return (togive);
 }
 
-/*
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h>
 
 int	main(int ac, char *av[])

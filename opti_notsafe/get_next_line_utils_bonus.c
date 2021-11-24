@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 12:01:59 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/24 11:39:22 by fle-blay         ###   ########.fr       */
+/*   Created: 2021/11/18 13:55:00 by fle-blay          #+#    #+#             */
+/*   Updated: 2021/11/24 11:38:35 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 unsigned int	ft_strlen(const char *s)
 {
