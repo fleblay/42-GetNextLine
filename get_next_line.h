@@ -6,7 +6,7 @@
 /*   By: fle-blay <fle-blay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:03:35 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/24 10:29:30 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:41:31 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char			*ft_strrawjoin(char const *s1, char const *s2, int s2size);
 char			*ft_substr(char const *s, unsigned int start, unsigned int len);
 void			ft_bzero(void *s, unsigned int n);
 int				load_content(int fd, char **dest);
-int				update_str(char **togive, char **mainstr);
-char			*safe_exit(char *str1, char *str2, char *str3, char *str4);
+void			update_str(char **togive, char **mainstr);
+void			multi_freenull(char **s1, char **s2, char **s3, char **s4);
 char			*get_next_line(int fd);
 
 #endif
